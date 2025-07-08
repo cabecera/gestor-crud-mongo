@@ -3,8 +3,8 @@ from pymongo import MongoClient
 
 try:
     def conectar():
-        cliente = MongoClient("mongodb://localhost:27017/")
-        bd = cliente["proyecto_mongo"]
+        client = MongoClient("mongodb://localhost:27017/")
+        bd = client["proyecto_mongo"]
         return bd
 
 except Exception as ex:
