@@ -4,6 +4,7 @@ Aplicación en Python para gestionar clientes, productos y pedidos con operacion
 
 ## Estructura del Proyecto
 
+```plaintext
 gestor-crud-mongo/
 ├── src/
 │ ├── clientes.py # CRUD + búsqueda de clientes
@@ -13,9 +14,11 @@ gestor-crud-mongo/
 │ └── init.py
 ├── tests/ # Pruebas unitarias
 └── README.md
+```
 
 
-### Funcionalidades
+
+## Funcionalidades
 
 #### Módulo de Clientes
 registrar_cliente(data)                # Crea nuevo cliente
