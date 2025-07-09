@@ -1,0 +1,50 @@
+
+
+db.cliente.insertOne({
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "direccion": {
+      "calle": "Av. Central",
+      "numero": 123,
+      "ciudad": "Ciudad Real"
+    },
+    "fecha_registro": "2024-06-01"
+  })
+
+db.producto.insertOne({
+    "codigo_producto": "P001",
+    "nombre": "Lápiz",
+    "precio": 150,
+    "stock": 50,
+    "estado": "activo"
+  })
+
+  db.producto.insertOne({
+    "codigo_producto": "P001",
+    "nombre": "Cuaderno",
+    "precio": 500,
+    "stock": 10,
+    "estado": "activo"
+  })
+
+db.pedido.insertOne({
+    "cliente": {
+      "nombre": "Juan",
+      "apellido": "Pérez"
+    },
+    "productos": [
+      {
+        "codigo_producto": "P001",
+        "nombre": "Lápiz",
+        "cantidad": 3,
+        "precio_unitario": 150
+      },
+      {
+        "codigo_producto": "P002",
+        "nombre": "Cuaderno",
+        "cantidad": 2,
+        "precio_unitario": 500
+      }
+    ],
+    "metodo_pago": "Tarjeta"
+  })
