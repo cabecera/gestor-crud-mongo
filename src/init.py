@@ -17,8 +17,8 @@ def menu_principal():
             menu_clientes()
         elif opcion == "2":
             menu_productos()
-        # elif opcion == "3":
-        #     buscar_cliente()
+        elif opcion == "3":
+            menu_pedidos()
         # elif opcion == "4":
         #     buscar_cliente_ciudad()
         # elif opcion == "5":

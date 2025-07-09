@@ -1,10 +1,10 @@
-DOCUMENTACIÓN DE FUNCIONALIDADES
+# DOCUMENTACIÓN DE FUNCIONALIDADES
 
 A continuación se describen en detalle las funcionalidades implementadas hasta el momento en el sistema.
 
 ------------------------------------------------------------
 
-CONEXIÓN A LA BASE DE DATOS
+## CONEXIÓN A LA BASE DE DATOS
 
 ### Función: conectar()
 
@@ -23,7 +23,7 @@ Comportamiento:
 
 ------------------------------------------------------------
 
-GESTIÓN DE CLIENTES
+## GESTIÓN DE CLIENTES
 
 ### Función: registrar_cliente()
 
@@ -147,7 +147,7 @@ Comportamiento:
 
 ------------------------------------------------------------
 
-GESTIÓN DE PRODUCTOS
+## GESTIÓN DE PRODUCTOS
 
 ### Función: registrar_producto()
 
@@ -237,7 +237,86 @@ Comportamiento:
 
 ------------------------------------------------------------
 
-MENÚ PRINCIPAL
+## GESTIÓN DE PEDIDOS
+
+### Función: registrar_pedido()
+
+Propósito:
+Permitir registrar un nuevo pedido asociado a un cliente, con detalle de los productos solicitados, cantidad de cada uno y método de pago. Al registrar el pedido, se descuenta automáticamente la cantidad pedida del stock de cada producto.
+
+Entradas:
+No recibe parámetros directamente; los datos se obtienen mediante la interacción con el usuario.
+
+Salidas:
+No retorna valor. Muestra mensajes en consola indicando el resultado de la operación.
+
+Comportamiento:
+- Solicita el nombre del cliente y lo busca en la base de datos.
+- Si el cliente no existe, informa y cancela el registro del pedido.
+- Permite agregar uno o varios productos al pedido, solicitando el código y la cantidad de cada uno.
+- Verifica que exista suficiente stock para cada producto antes de agregarlo al pedido.
+- Si hay suficiente stock, descuenta la cantidad pedida del stock del producto en la base de datos.
+- Si no hay suficiente stock, informa al usuario y no permite agregar ese producto al pedido.
+- Solicita el método de pago.
+- Crea un documento de pedido con los datos del cliente, el detalle de productos (código, nombre, cantidad, precio unitario) y el método de pago.
+- Inserta el pedido en la colección 'pedido' de la base de datos.
+- Informa al usuario si el pedido fue registrado con éxito.
+
+### Función: actualizar_pedido()
+
+Propósito:
+Permitir modificar el método de pago de un pedido existente, identificándolo por su ID. Solo se actualizan los campos que el usuario desee modificar.
+
+Entradas:
+No recibe parámetros directamente; el ID del pedido y los nuevos datos se solicitan al usuario por consola.
+
+Salidas:
+No retorna valor. Muestra mensajes en consola indicando el resultado de la operación.
+
+Comportamiento:
+- Solicita al usuario el ID del pedido a actualizar.
+- Busca el pedido en la base de datos usando el ObjectId.
+- Permite dejar en blanco los campos que no se desean modificar.
+- Si no se ingresan datos nuevos, informa al usuario y termina la operación.
+- Realiza la actualización en la base de datos usando el ID como filtro y el diccionario de nuevos datos como parámetro.
+- Informa si la actualización fue exitosa ("Pedido actualizado con éxito.") o si no se pudo actualizar el pedido.
+
+### Función: eliminar_pedido()
+
+Propósito:
+Eliminar un pedido de la base de datos, identificándolo por su ID. El ID se solicita al usuario y se utiliza como filtro para eliminar el pedido correspondiente.
+
+Entradas:
+No recibe parámetros directamente; el ID se solicita al usuario por consola.
+
+Salidas:
+No retorna valor. Muestra mensajes en consola indicando el resultado de la operación.
+
+Comportamiento:
+- Solicita al usuario el ID del pedido a eliminar.
+- Busca y elimina el pedido que coincida con el ID proporcionado.
+- Informa si la eliminación fue exitosa ("Pedido eliminado con éxito.") o si no se encontró el pedido ("No se encontró un pedido con ese ID.").
+
+### Función: buscar_pedidos_por_cliente()
+
+Propósito:
+Permitir consultar todos los pedidos realizados por un cliente específico, identificándolo por su nombre.
+
+Entradas:
+No recibe parámetros directamente; el nombre del cliente se solicita al usuario por consola.
+
+Salidas:
+No retorna valor. Muestra en consola los datos de los pedidos encontrados o un mensaje si no se encuentra ninguno.
+
+Comportamiento:
+- Solicita al usuario el nombre del cliente a buscar.
+- Realiza una búsqueda en la colección 'pedido' filtrando por el nombre del cliente.
+- Muestra los datos de cada pedido encontrado (ID, cliente, método de pago, productos, cantidad, precio unitario).
+- Informa si no se encontró ningún pedido para ese cliente.
+
+------------------------------------------------------------
+
+## MENÚ PRINCIPAL
 
 ### Función: menu()
 
