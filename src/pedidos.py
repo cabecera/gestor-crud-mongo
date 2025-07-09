@@ -39,7 +39,11 @@ def registrar_pedido():
             continue
         # Restar la cantidad del stock del producto
         nuevo_stock = stock_actual - cantidad
-        db.producto.update_one({"codigo_producto": codigo_producto}, {"$set": {"stock": str(nuevo_stock)}})
+        if nuevo_stock == 0:
+            db.producto.update_one({"codigo_producto": codigo_producto}, {"$set": {"stock": "sin stock"}})
+            print(f"El producto '{producto['nombre']}' ha quedado SIN STOCK.")
+        else:
+            db.producto.update_one({"codigo_producto": codigo_producto}, {"$set": {"stock": str(nuevo_stock)}})
         # Agregar el producto y la cantidad al detalle del pedido
         productos_pedido.append({
             "codigo_producto": codigo_producto,
