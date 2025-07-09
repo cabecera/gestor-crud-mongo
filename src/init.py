@@ -1,30 +1,35 @@
 from cliente import *
+from productos import *
+from pedidos import *
 
 # === Menú principal ===
-def menu():
+def menu_principal():
     while True:
         print("\n=== Menú Principal ===")
-        print("1. Registrar cliente")
-        print("2. Actualizar cliente")
-        print("3. Buscar cliente por nombre")
-        print("4. Eliminar cliente")
+        print("1. Menu cliente")
+        print("2. Menu productos")
+        print("3. Menu pedidos")
         print("0. Salir")
 
         opcion = input("Selecciona una opción: ")
 
         if opcion == "1":
-            registrar_cliente()
+            menu_clientes()
         elif opcion == "2":
-            actualizar_cliente()
-        elif opcion == "3":
-            buscar_cliente()
-        elif opcion == "4":
-            eliminar_cliente()
+            menu_productos()
+        # elif opcion == "3":
+        #     buscar_cliente()
+        # elif opcion == "4":
+        #     buscar_cliente_ciudad()
+        # elif opcion == "5":
+        #     buscar_cliente_fecha()
+        # elif opcion == "6":
+        #     eliminar_cliente()
         elif opcion == "0":
-            print("¡Hasta luego!")
+            print("Muchas gracias. Adiós!")
             break
         else:
             print("Opción no válida.")
 
 if __name__ == "__main__":
-    menu()
+    menu_principal()
