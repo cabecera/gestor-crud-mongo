@@ -3,13 +3,29 @@ from conexion import conectar
 
 def registrar_pedido():
     print("\n=== Registrar Pedido ===")
+    db = conectar()
+    # Mostrar todos los clientes disponibles
+    print("Clientes disponibles:")
+    for c in db.cliente.find():
+        print(f"- {c.get('nombre','')} {c.get('apellido','')}")
     # Solicitar el nombre del cliente y buscarlo en la base de datos
     nombre_cliente = input("Nombre del cliente: ")
-    db = conectar()
     cliente = db.cliente.find_one({"nombre": nombre_cliente})
     if not cliente:
         print("No se encontró un cliente con ese nombre.")
         return
+
+    # Mostrar todos los productos en stock
+    print("\nProductos en existencias:")
+    for p in db.producto.find({"stock": {"$nin": ["0", "sin stock", 0]}}):
+        print(f"- Código: {p.get('codigo_producto','')}, Nombre: {p.get('nombre','')}, Stock: {p.get('stock','')}")
+
+        # $nin es el operador "not in" (no está en)}
+        # Busca productos que el stock NO sea "0", "sin stock" o 0
+
+        # el bucle for itera en los productos y por cada p imprime el codigo, nombre y stock
+
+        # usar .get imprime el documento aunque no tengan los mismos campos
 
     productos_pedido = []
     # Bucle para agregar productos al pedido
