@@ -1,4 +1,5 @@
-# Sistema de Gestión de Clientes, Productos y Pedidos  
+# Sistema de Gestión de Clientes, Productos y Pedidos  Python
+# Asignatura Base de Datos No Estructuradas
 
 Aplicación en Python para gestionar clientes, productos y pedidos con operaciones CRUD y consultas personalizadas.
 
